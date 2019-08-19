@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SandBox</title>
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app2.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
 
   </head>
@@ -14,25 +14,38 @@
   <body>
     <!-- HAMMER JS ? check if exists or alternative -->
     
-      <header>
-          <div>Instructions</div>
+    <div class ="instructionBig hidden">
+      <img src="lama.jpg" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, delectus perspiciatis vero quod, ipsam, harum recusandae odio excepturi eos minus exercitationem pariatur provident repellendus eligendi aspernatur soluta corrupti quia porro.</p>
+    </div>  
+    
+    <header>
+          <div class = "instruction">Instructions</div>
           <h1>Donkey Island</h1>
-          <div>Music</div>
+          <div class = "music">Music</div>
       </header>
+
+    
 
     <div class="bigContainer">
       <div class="left">
-        <h3>You need to bring me</h3>
-        <ul></ul>
+        
+        <h3>BRING ME</h3>
+        <div class="menu"><span id="lamaCarrots">0</span> carots</div>
+        <div class="menu"></div>
+        <div class="menu"></div>
       </div>
-      <div class="lama"></div>
+      <div class="lama"><img src="lama.jpg"></div>
       <div class="container"></div>
+      <div class="house"><img src="house.jpg"></div>
       <div class="right">
         <h3>You're carrying:</h3>
-          <div><span id ="numCarots">0</span> carots</div>
-          <div><span id ="numBeers">0</span> drinks</div>
-          <div><span id="numBullets">0</span> ammos</div>
+        <div>
+          <div class="menu "><span id ="numCarots">0</span> carots</div>
+          <div class="menu focus"><span id ="numBeers">0</span> drinks</div>
+          <div class="menu "><span id="numBullets">0</span> ammos</div>
           <div><span></span></div>
+        </div>
          
       </div>
     </div>

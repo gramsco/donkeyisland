@@ -1,5 +1,7 @@
 * {
   font-family: "Acme", sans-serif;
+  box-sizing: border-box;
+
 }
 
 header {
@@ -15,6 +17,28 @@ header > *:hover {
   cursor: pointer;
 }
 
+
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  align-items:center;
+  top: 0;
+  left: 0;
+  padding:2%;
+  width: 100%;
+  height:15vh;
+  background-color: black;
+  opacity: 0.4;
+  box-sizing: border-box;
+}
+
+header > div{
+  width:15vw;
+}
+
 @media screen and (max-width : 400px) {
 
   .container{
@@ -27,6 +51,42 @@ header > *:hover {
 
 }
 
+.instructionBig{
+  position:fixed;
+  top:15vh;
+  background:black;
+  z-index:51;
+  height:100%;
+  width:100%;
+  opacity:0.8;
+  padding:10%;
+  box-sizing: border-box;
+  
+}
+
+
+.lama img,.house img{
+  box-shadow: inset 0 0 0 1000px red;
+  justify-self: center;
+  max-width:100%;
+  max-height:100%;
+  scale:(1 -1);
+}
+
+.instructionBig img{
+  float:right;
+  max-width:50%;
+  max-height:50%;
+}
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -35,7 +95,7 @@ body {
   color: white;
   position:fixed;
 
-  background: url('beach.jpg');
+  background: url('beachHouse.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -66,26 +126,7 @@ footer > *:hover{
 }
 
 
-header {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content:space-around;
-  align-items:center;
-  top: 0;
-  left: 0;
-  padding:2%;
-  width: 100%;
-  height:15vh;
-  background-color: black;
-  opacity: 0.4;
-  box-sizing: border-box;
-}
 
-header > div{
-  width:15vw;
-}
 
 /* @keyframes woops{
 
@@ -95,19 +136,31 @@ header > div{
 
 } */
 
+.selected{
+  border:1px gold solid;
+  transform:rotate(-5deg);
+}
+
 .lama{
-  background:url("Image001.png");
   background-size:cover;
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-  border:solid black 1px;
   align-self: center;
-  height:50px;
+  height:auto;
   width:10%;
   justify-self:auto;
+}
+
+.house{
+    background-size:cover;
+    align-self: center;
+    height:auto;
+    width:15%;
+    justify-self:auto;
+}
+
+.focus{
+
+  border:white 1px solid;
+
 }
 
 
@@ -116,14 +169,16 @@ header > div{
   margin:15vh auto;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
-  align-items: stretch;
+  justify-content:space-between;
+  align-content: center;
   flex-wrap:no-wrap;
   width: 100%;
   animation: 10s woops linear;
   text-align:center;
-  
 }
+
+
+
 
 li{
   list-style-type: none;
@@ -135,20 +190,42 @@ h3{
   text-align: center;
 }
 
-.container {
+.container { 
+  margin:5vh;
   align-self: flex-start;
-  border: solid black 1px;
   display: grid;
-  margin: 0 auto;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
-  box-sizing: border-box;
   justify-content: center;
   align-content: center;
+  grid-gap:2%;
+}
+
+.container > *{
+  
+  border:white solid 1px;
   
 }
 
+/* .container >*:first-child{
+  transform:scale(0.3);
+  border: solid black 1px;
+  transform:rotate(-45deg)
+} */
+
+/* .container >*:nth-child(3n+4){
+  transform:scale(0.3);
+  border: solid black 1px;
+  transform:rotate(-45deg)
+} */
+
+[id='40'],[id='50']{
+  border:0;
+  background:red;
+}
+
 .left{
+
   background-color:blue;
   opacity:0.6;
 }
@@ -185,14 +262,20 @@ h3{
 }
 
 .joker {
-  background: url("Donkey.gif");
-  background-size: cover;
+  background: url("donkey.png");
+  transform:scale(1.5);
+  background-size:200%;
+  background-position-y: 40%;
+  background-position-x: 40%;
   opacity: 1;
 }
 
 .carotte{
   background:url("Carotte.png");
   background-size:cover;
+  transform:scale(1.1);
+  border:black 3px solid;
+
 }
 
 audio {
