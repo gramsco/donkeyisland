@@ -1,0 +1,200 @@
+* {
+  font-family: "Acme", sans-serif;
+}
+
+header {
+  padding-top: 2%;
+}
+
+header:hover {
+  opacity: 1;
+}
+
+header > *:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+@media screen and (max-width : 400px) {
+
+  .container{
+    order:-1;
+  }
+
+  header > div{
+    visibility: hidden;
+  }
+
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin:0 auto;
+  color: white;
+  position:fixed;
+
+  background: url('beach.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+footer{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  width:100%;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none; 
+ -webkit-user-select: none;
+ -webkit-touch-callout: none; 
+}
+
+footer > *{
+  border:solid white 1px;
+  padding:0.5%;
+  box-sizing: border-box;
+}
+
+footer > *:hover{
+  transform:scale(1.2);
+  cursor:pointer;
+}
+
+
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  align-items:center;
+  top: 0;
+  left: 0;
+  padding:2%;
+  width: 100%;
+  height:15vh;
+  background-color: black;
+  opacity: 0.4;
+  box-sizing: border-box;
+}
+
+header > div{
+  width:15vw;
+}
+
+/* @keyframes woops{
+
+  from{
+    width:0%;
+  }
+
+} */
+
+.lama{
+  background:url("Image001.png");
+  background-size:cover;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  border:solid black 1px;
+  align-self: center;
+  height:50px;
+  width:10%;
+  justify-self:auto;
+}
+
+
+
+.bigContainer {
+  margin:15vh auto;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: stretch;
+  flex-wrap:no-wrap;
+  width: 100%;
+  animation: 10s woops linear;
+  text-align:center;
+  
+}
+
+li{
+  list-style-type: none;
+}
+
+h3{
+  font-size:3vw;
+  width:15vw;
+  text-align: center;
+}
+
+.container {
+  align-self: flex-start;
+  border: solid black 1px;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+  box-sizing: border-box;
+  justify-content: center;
+  align-content: center;
+  
+}
+
+.left{
+  background-color:blue;
+  opacity:0.6;
+}
+
+.right {
+  background-color:red;
+  
+}
+
+*:focus {
+  background: red;
+}
+
+.timer {
+  /* border: solid 1px white; */
+  width: 20%;
+  top: 0;
+  right: 0;
+  color: white;
+  background: blue;
+  padding: 2%;
+}
+
+.ecran h1 {
+  text-align: center;
+  color: white;
+}
+
+
+.container > div {
+  opacity: 1;
+  width: 20px;
+  height: 20px;
+}
+
+.joker {
+  background: url("Donkey.gif");
+  background-size: cover;
+  opacity: 1;
+}
+
+.carotte{
+  background:url("Carotte.png");
+  background-size:cover;
+}
+
+audio {
+  visibility: hidden;
+}
