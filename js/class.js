@@ -16,10 +16,11 @@ class Game {
         this.currentID = "00";
 
         //number of items
-        this.numCarots = 0;
+        this.numCarrots = 0;
         this.numShells = 0;
         this.lives = 3;
         this.numDrinks = 5;
+        this.totalcarrots = 0
 
         //houses
         this.inHouse = false;
@@ -145,9 +146,12 @@ class Game {
     shellsDestroyer(id) {
         for (let i = 0; i < this.shells.length; i++) {
             if (this.shells[i] == id) {
+                console.log(id)
                 this.shells.splice(i, 1);
                 this.numShells++
                 this.mapJS[id[0]][id[1]] == id;
+                console.log("hmm")
+                console.log(id)
                 return true;
             }
         } return false;
@@ -157,8 +161,9 @@ class Game {
         for (let i = 0; i < this.carrots.length; i++) {
             if (this.carrots[i] == id) {
                 this.carrots.splice(i, 1);
-                this.numCarots++
+                this.numCarrots++
                 this.mapJS[id[0]][id[1]] == id;
+                
                 return true;
             }
         } return false;
@@ -178,7 +183,7 @@ class Game {
     startTimer() {
         this.intervalama = setInterval(() => {
 
-            this.gametimer += 1
+            this.gametimer ++
 
         }, 1000);
     }
@@ -205,7 +210,6 @@ class Game {
     randomYX() {
         let y = Math.floor(Math.random() * 10)
         let x = Math.floor(Math.random() * 10)
-        // return [y_random, x_random]
         return "" + y + x;
     }
 
@@ -216,13 +220,10 @@ class Game {
             let sub_arr = []
             for (let x = 0; x < 10; x++) {
                 let valueJS = ("" + y + x)
-
                 if (y == joker[0] && x == joker[1]) {
                     this.currentID = "" + y + x;
                     valueJS = "joker";
-
                 }
-
                 sub_arr.push(valueJS);
             }
             this.mapJS.push(sub_arr);
@@ -243,10 +244,11 @@ class Game {
     createCarrots(position) {
 
         if (this.mapJS[position[0]][position[1]] == "shell" || this.mapJS[position[0]][position[1]] != "joker") {
-
+            
             this.mapJS[position[0]][position[1]] = "carrot"
             position = "" + position[0] + position[1]
-            this.carrots.push(position)
+            this.carrots.push(position);
+            this.totalcarrots++;
             return position;
         }
         return false;

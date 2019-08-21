@@ -22,7 +22,7 @@ let lamaFill = document.getElementById("lamafill")
 let sonFill = document.getElementById("sonfill")
 
 //Items carried and lives
-let spanCarots = document.getElementById("numCarots");
+let spanCarrots = document.getElementById("numCarrots");
 let spanShells = document.getElementById("numShells")
 let spanDrinks = document.getElementById("numBeers")
 let numlives = document.getElementById("numLives");
@@ -34,8 +34,7 @@ let focused = document.querySelector(".menu.focus");
 //Messages from left and right
 let lamatext = document.getElementById("lamaText")
 let sontext = document.getElementById("sonText")
-
-let lamatimer = document.getElementById("")
+let lamatimer = document.getElementById("lamafill")
 
 //Music Manager
 let music = false;
@@ -52,8 +51,6 @@ function launch() {
         audio.volume = 1;
         audio.play();
     }
-
-
 }
 
 //STARTING THE GAME
@@ -71,6 +68,16 @@ game.startLama()
 game.startSon()
 renderMap();
 
+// rendering des timers / objets
+setInterval(() => {
+    spanCarrots.innerHTML = game.numCarrots;
+    spanShells.innerHTML = game.numShells;
+    spanDrinks.innerHTML = game.numDrinks;
+    lamaFill.innerHTML = game.lamatimer + "%";
+    lamaFill.style.width = game.lamatimer + "%";
+    if (game.lamatimer > 100) game.lamatimer = 100;
+
+}, 10);
 
 // EVENTS
 //keyboard
@@ -92,8 +99,7 @@ setInterval(() => {
     let newDiv = document.getElementById(position);
     newDiv.classList.add("carrot");
     }
-    return false;
-}, 1000);
+}, 800);
 
 setInterval(() => {
 
@@ -113,7 +119,7 @@ setInterval(() => {
     newDiv.classList.add("shell");
     }
     return false;
-}, 1000);
+}, 10000);
 
 setInterval(() => {
 
@@ -122,7 +128,7 @@ setInterval(() => {
         let div_to_kill = document.getElementById(position)
         div_to_kill.classList.remove("shell")
     }
-}, 2000)
+}, 12000)
 
 //// LA GESTION DES MESSAGES
 
@@ -191,17 +197,17 @@ function move(e) {
 
         // Unload 
         // Lama
-        if (game.focused == 1 && game.numCarots > 0 && game.currentID == "lama") {
-            game.numCarots--;
+        if (game.focused == 1 && game.numCarrots > 0 && game.currentID == "lama") {
+            game.numCarrots--;
             game.lamatimer++;
         }
-        else if (game.focused == 2 && game.numCarots > 0 && game.currentID == "lama"){
+        else if (game.focused == 2 && game.numCarrots > 0 && game.currentID == "lama"){
             game.numDrinks--;
             game.lamatimer = 100;
         }
         // Home
-        if (game.focused == 1 && game.numCarots > 0 && game.currentID == "home") {
-            game.numCarots--;
+        if (game.focused == 1 && game.numCarrots > 0 && game.currentID == "home") {
+            game.numCarrots--;
             game.childtimer += 5;
         }
         else if (game.focused == 2 && game.numDrinks > 0 && game.currentID == "home") {
@@ -224,10 +230,7 @@ function move(e) {
         document.getElementById(game.currentID).classList.remove("shell")
     }
 
-    spanCarots.innerHTML = game.numCarots;
-    spanShells.innerHTML = game.numShells;
-    spanDrinks.innerHTML = game.numDrinks;
-    if (game.lamatimer > 100) game.lamatimer = 100;
+    
 
 }
 
@@ -279,7 +282,6 @@ function moveRight(e) {
 }
 
 function moveUp() {
-
      //removes the donkey
     currentElement = document.getElementById(game.currentID)
     currentElement.classList.remove("joker");
@@ -289,18 +291,18 @@ function moveUp() {
     
     if (result == "menu"){
         let previous = focused.previousElementSibling;
-        focused.classList.toggle("focus")
-        previous.classList.toggle("focus")
+        focused.classList.toggle("focus");
+        previous.classList.toggle("focus");
     }
     else if (result == "bar"){
-        bar.classList.remove("joker")
-        bar.classList.remove("selected")
+        bar.classList.remove("joker");
+        bar.classList.remove("selected");
     }
+
     //add the donkey on the DOM
     currentElement = document.getElementById(game.currentID);
     currentElement.classList.add("joker");
-    currentElement.classList.remove("carrot");
-    
+    currentElement.classList.remove("carrot");   
 }
 
 function moveDown() {
@@ -325,6 +327,9 @@ function moveDown() {
 
 // functions to check if things go right
 
-setInterval(() => {
-    console.table(game.currentID)
-},1000)
+// setInterval(() => {
+        
+//     console.log((game.totalcarrots/game.gametimer).toFixed(2) > 1);
+
+
+// },1000)

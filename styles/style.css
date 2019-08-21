@@ -120,7 +120,6 @@ footer {
   left: 0;
   width: 50%;
   border: solid white 1px;
-  background-color: grey;
 }
 
 .tofill {
@@ -243,11 +242,13 @@ li {
   width:100%;
 }
 
-.bar{
-  height:80%;
-  width:30%;
-  background:black;
-  opacity:0.3;
+#bar{
+  background:url('/img/booze.jpeg');
+  opacity:1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position:50%;
+  transform:scale(1.2);
 }
 
 
