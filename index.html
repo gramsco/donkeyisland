@@ -6,56 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SandBox</title>
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./app2.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
 
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
     <!-- HAMMER JS ? check if exists or alternative -->
-    
-    <div class ="instructionBig hidden">
-      <img src="lama.jpg" alt="">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, delectus perspiciatis vero quod, ipsam, harum recusandae odio excepturi eos minus exercitationem pariatur provident repellendus eligendi aspernatur soluta corrupti quia porro.</p>
-    </div>  
-    
+
     <header>
-          <div class = "instruction">Instructions</div>
-          <h1>Donkey Island</h1>
-          <div class = "music">Music</div>
-      </header>
+      <div class="instruction">Instructions</div>
+      <h1>Donkey Island</h1>
+      <div class="music">Music</div>
+    </header>
 
     
 
     <div class="bigContainer">
-      <div class="left">
-        
-        <h3>BRING ME</h3>
-        <div class="menu"><span id="lamaCarrots">0</span> carots</div>
-        <div class="menu"></div>
-        <div class="menu"></div>
-      </div>
-      <div class="lama"><img src="lama.jpg"></div>
-      <div class="container"></div>
-      <div class="house"><img src="house.jpg"></div>
-      <div class="right">
-        <h3>You're carrying:</h3>
-        <div>
-          <div class="menu "><span id ="numCarots">0</span> carots</div>
-          <div class="menu focus"><span id ="numBeers">0</span> drinks</div>
-          <div class="menu "><span id="numBullets">0</span> ammos</div>
-          <div><span></span></div>
-        </div>
-         
-      </div>
+
+      <div class="lama"><h2>Lama del Rey's villa</h2></div>
+      <div class="container"></div> <!---important-->
+      <img class="home" src="fishery.svg" />
+
+      
     </div>
 
-    <footer class="menu">
-      <div id="lefty">Left</div>
-      <div id="uppy">Up</div>
-      <div id="downy">Down</div>
-      <div id="righty">Right</div>
+    <div class="down">
+            <div><h3>Lama del Rey</h3><span id = "lamaText">"Get back to work!!!"</span></div>
+            <p class="bar">The Smart-Ass</p>
+            <div><h3>Piñatino</h3><span id ="sonText">"Dad... I'm so hungry..."</span></div>
+          </div>
+
+
+    <div class="warning hidden">
+      <img id="img_warning" />
+      <p id="txt_warning"></p>
+    </div>
+
+    <footer class="times">
+      <div class="timer1">
+        <div class="tofill" id="lamafill"></div>
+      </div>
+      <div class="timer2">
+        <div class="tofill2" id="sonfill"></div>
+      </div>
     </footer>
 
+    <div class="menu_right">
+      <h3>You have</h3>
+      <div>
+        <div class="menu "><span id="numCarots">0</span> carrot(s)</div>
+        <div class="menu focus"><span id="numBeers">0</span> drink(s)</div>
+        <div class="menu "><span id="numShells">0</span> shell(s)</div>
+        <div class="menu "><span id="numLives">3</span> lives</div>
+      </div>
+      
+    </div>
+    <script src="./messages.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

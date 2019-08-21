@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SandBox</title>
+    <link rel="stylesheet" href="./style.css" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <!-- HAMMER JS ? check if exists or alternative -->
+    
+    <div class ="instructionBig hidden">
+      <img src="lama.jpg" alt="">
+      <p>
+        Donkey Island is a lost paradise where donkeys used to live peacefully. 
+        <br> It all changed when the fierce Lama Del Rey came to this land and enslaved all the donkeys.
+        <br> As Donkey worker and single dad Piñato, your task is to obey your master.
+        <br> You also need to provide food for your son, Piñatino. The kid has not been the same since his mum, Asseñora, left for a a career in Cinema.
+        <br> There have been rumors of a future uprising but you don't really believe... Maybe the guys at the Spart-Ass-Cuss can tell you more.
+        <br> Oh, and by the way, here at Donkey Island, carrot is the only food and shell's the only currency.
+        
+      </p>
+    </div>  
+    
+    <header>
+          <div class = "instruction">Instructions</div>
+          <h1>Donkey Island</h1>
+          <div class = "music">Music</div>
+      </header>
+
+    
+
+    <div class="bigContainer">
+      <!-- <div class="left">
+        
+        <h3>BRING ME</h3>
+        <div class="menu"><span id="lamaCarrots">0</span> carots</div>
+        <div class="menu"></div>
+        <div class="menu"></div>
+      </div> -->
+      <div class="lama">Lama del Rey's villa</div>
+      <div class="toBlack">
+      <div class="container"></div>
+      </div>  
+          
+    <div class="menu_right">
+
+        <h3>You're carrying:</h3>
+        <div>
+          <div class="menu "><span id ="numCarots">0</span> carrots</div>
+          <div class="menu focus"><span id ="numBeers">0</span> drinks</div>
+          <div class="menu "><span id="numBullets">0</span> ammos</div>
+        </div>
+      </div>
+      <img class="house" src="fishery.svg">
+
+    <div class="down">
+      <p>The Smart-Ass</p>
+    </div>
+
+    <div class="warning hidden">
+      <img id ="img_warning"> 
+      <p id ="txt_warning"></p>
+    </div>
+    </div>
+    <footer class="times">
+      
+      <div class="timer1">
+          <div class="tofill" id="lamafill"></div>
+      </div>
+
+      <!-- <div class="timer2">
+          <div id="lamafill"><span>50</span> %</div>
+      </div> -->
+
+    </footer>
+    <script src="./messages.js"></script>
+    <script src="./app2.js"></script>
+  </body>
+</html>
