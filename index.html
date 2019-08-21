@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SandBox</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
 
     <link
       href="https://fonts.googleapis.com/css?family=Acme&display=swap"
@@ -30,16 +30,16 @@
 
     <div class="bigContainer">
 
-      <div class="lama"><h2>Lama del Rey's villa</h2></div>
+      <div class="lama"><h2 id = "lama">Lama del Rey's villa</h2></div>
       <div class="container"></div> <!---important-->
-      <img class="home" src="fishery.svg" />
+      <img id="home" class="home" src="/img/fishery.svg" />
 
       
     </div>
 
     <div class="down">
             <div><h3>Lama del Rey</h3><span id = "lamaText">"Get back to work!!!"</span></div>
-            <p class="bar">The Smart-Ass</p>
+            <div id="bar">O'SmartAss</div>
             <div><h3>Piñatino</h3><span id ="sonText">"Dad... I'm so hungry..."</span></div>
           </div>
 
@@ -58,17 +58,19 @@
       </div>
     </footer>
 
-    <div class="menu_right">
+    <div class="objects">
       <h3>You have</h3>
+      <div class="menu "><span id="numLives">3</span> lives</div>
       <div>
         <div class="menu "><span id="numCarots">0</span> carrot(s)</div>
         <div class="menu focus"><span id="numBeers">0</span> drink(s)</div>
         <div class="menu "><span id="numShells">0</span> shell(s)</div>
-        <div class="menu "><span id="numLives">3</span> lives</div>
+        
       </div>
       
     </div>
-    <script src="./messages.js"></script>
-    <script src="./app.js"></script>
+    <script src="./js/messages.js"></script>
+    <script src="./js/class.js"></script>
+    <script src="./js/dom.js"></script>
   </body>
 </html>

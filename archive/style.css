@@ -87,7 +87,7 @@ body {
   margin: 0 auto;
   color: white;
   position: fixed;
-  background: url("beachHouse.jpg");
+  background: url("/img/beachHouse.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -264,7 +264,7 @@ h3 {
 .down{
   margin:0 25%;;
   justify-content: center;
-  background: url("booze.jpeg");
+  background: url("/img/booze.jpeg");
   background-size:cover;
   background-position-y:60%;
   width:30%;
@@ -296,7 +296,7 @@ h3 {
 }
 
 .joker {
-  background: url("donkey.png");
+  background: url("/img/donkey.png");
   transform: scale(1.5);
   background-size: 200%;
   background-position-y: 40%;
@@ -305,7 +305,7 @@ h3 {
 }
 
 .carotte {
-  background:url("Carotte.png");
+  background:url("/img/Carotte.png");
   background-size: cover;
   transform: scale(1.1);
 }

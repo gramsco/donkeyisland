@@ -2,7 +2,7 @@ let msgs = [
 
     {
         name: "Lama Del Rey",
-        img: "lama.jpg",
+        img: "/img/lama.jpg",
         messages:
 
             [
@@ -10,15 +10,15 @@ let msgs = [
                 "You know, you're not the worst Donkey that worked for me... but pretty close.",
                 "You call that work ?"
             ],
-        sound: "to_check.wav"
+        sound: "/sounds/to_check.wav"
     },
     {
         name: "Piñatiño", 
-        img:"pinatino.jpeg",
+        img:"/img/pinatino.jpeg",
         messages: [
             "Dad, I'm so Hungry...", "Do I have to work for mister Rey, too?"
         ],
-        sound: "to_check2.wav"
+        sound: "/sound/to_check2.wav"
     }
 
 ]

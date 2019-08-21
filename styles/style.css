@@ -75,7 +75,7 @@ header > div {
 body {
   display: flex;
   flex-direction:column;
-  justify-content: start;
+  justify-content: space-around;
   align-content: space-between;
   width: 100%;
   height: 100%;
@@ -83,7 +83,7 @@ body {
   margin: 0 auto;
   color: white;
   position: fixed;
-  background: url("beachHouse.jpg");
+  background: url("/img/beachHouse.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -131,21 +131,22 @@ footer {
 }
 
 .timer2 {
-  justify-self: flex-end;
+  left: 0;
   width: 50%;
   border: solid white 1px;
-  background-color: green;
+  background-color: grey;
 }
 
 .tofill2 {
   height: 2vw;
   width: 100%;
-  background-color: grey;
+  background-color: green;
   text-align: center;
 }
 
 .selected {
   border: 1px gold solid;
+  background:black;
   /* transform: rotate(2deg); */
 }
 
@@ -169,14 +170,15 @@ footer {
   border: white 1px solid;
 }
 
-.menu_right {
-  margin:0 auto;
+.objects {
   justify-self: flex-end;
+  align-self:center;
   display:flex;
   justify-content: space-around;
   color: white;
-  width: 50%;
   background: rgba(0, 0, 255, 0.5);
+  height:auto;
+  width:50%;
  
 }
 
@@ -225,27 +227,30 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-content: flex-start;
+  align-content: center;
   color: white;
   text-align: center;
+  height:auto;
 }
 
 .down > * {
   width: 30%;
-  height:30%;
+  padding:0;
+  height:10vh;
 }
 
 .down span{
   width:100%;
 }
 
-
-.bar {
-  background: url("booze.jpeg");
-  background-size: cover;
-  background-position-y: 60%;
-  color: white;
+.bar{
+  height:80%;
+  width:30%;
+  background:black;
+  opacity:0.3;
 }
+
+
 
 *:focus {
   background: red;
@@ -300,22 +305,22 @@ li {
 
 
 .joker {
-  background: url("donkey.png");
-  transform: scale(1.5);
+  background: url("/img/donkey.png") rgba(0,0,0,0.3);
   background-size: 200%;
+  border-radius:50%;
   background-position-y: 40%;
   background-position-x: 40%;
   opacity: 1;
 }
 
 .carrot {
-  background: url("Carotte.png");
+  background: url("/img/Carotte.png");
   background-size: cover;
   transform: scale(1.1);
 }
 
 .shell {
-  background: url("shell-template.jpg");
+  background: url("/img/shell-template.jpg");
   background-size: cover;
   transform: scale(0.7);
 }
