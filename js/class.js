@@ -14,7 +14,6 @@ class Game {
 
         //position 
         this.currentID = "00";
-        this.currentPosition = [0, 0]
 
         //number of items
         this.numCarots = 0;
@@ -59,19 +58,18 @@ class Game {
             return "bar";
         }
 
-        if (this.currentPosition[0] <= 0) return false;
+        if (this.currentID[0] <= 0) return false;
         
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
-        this.currentPosition[0] = "" + (Number(this.currentPosition[0]) - 1);
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = "joker";
+        this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${(Number(this.currentID[0]) - 1) + this.currentID[1]}`
     }
 
 
     moveLeft() {
         if (this.inHouse == true) return false;
-        if (this.currentID == 40 || this.currentID == 50) {
-            this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
+        if (this.currentID == "40" || this.currentID == "50") {
+            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             alert(`entered from ${this.currentID}`)
             this.currentID = "lama";
             this.inHouse = true;
@@ -79,14 +77,13 @@ class Game {
         }
         if (this.currentID == "home") {
             this.currentID = "49";
-            this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
+            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             this.inHome = false;
             return "home";
         }
-        if (this.currentPosition[1] <= 0) return false;
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
-        this.currentPosition[1]--;
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = "joker";
+        if (this.currentID[1] <= 0) return false;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${this.currentID[0] + (this.currentID[1] - 1)}`;
     }
 
@@ -94,7 +91,7 @@ class Game {
     moveRight() {
         if (this.inHome) return false;
         if (this.currentID == 49 || this.currentID == 59) {
-            this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
+            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             this.currentID = "home";
             this.inHome = true;
             return "home"
@@ -102,16 +99,15 @@ class Game {
         if (this.inHouse == true) {
             this.currentID = "40";
             this.inHouse = false;
-            this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
+            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             
             return "lama"
         }
 
-        if (this.currentPosition[1] >= 9) return false;
+        if (this.currentID[1] >= 9) return false;
 
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
-        this.currentPosition[1] = "" + (Number(this.currentPosition[1]) + 1);
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = "joker";
+        this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${this.currentID[0] + (Number(this.currentID[1]) + 1)}`
         return true;
     }
@@ -119,8 +115,8 @@ class Game {
     moveDown() {
         if (this.inBar) return false;
 
-        if (this.currentID == 94 || this.currentID == 95) {
-            this.mapJS[this.currentPosition[0]][this.currentPosition[1]] == this.currentID;
+        if (this.currentID == "94" || this.currentID == "95") {
+            this.mapJS[this.currentID[0]][this.currentID[1]] == this.currentID;
             this.currentID = "bar";
             this.inBar = true;
             return "home"
@@ -138,10 +134,9 @@ class Game {
             return false;
         }
 
-        if (this.currentPosition[0] >= 9) return false;
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = this.currentID;
-        this.currentPosition[0] = "" + (Number(this.currentPosition[0]) + 1);
-        this.mapJS[this.currentPosition[0]][this.currentPosition[1]] = "joker";
+        if (this.currentID[0] >= 9) return false;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
+        this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${(Number(this.currentID[0]) + 1) + this.currentID[1]}`
         return true;
 
@@ -223,8 +218,6 @@ class Game {
                 let valueJS = ("" + y + x)
 
                 if (y == joker[0] && x == joker[1]) {
-                    this.currentPosition[0] = y;
-                    this.currentPosition[1] = x;
                     this.currentID = "" + y + x;
                     valueJS = "joker";
 

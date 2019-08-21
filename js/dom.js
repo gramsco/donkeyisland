@@ -326,7 +326,5 @@ function moveDown() {
 // functions to check if things go right
 
 setInterval(() => {
-    console.table(game.mapJS)
-    console.log(game.currentID)
-    console.log(game.currentPosition)
-},5000)
+    console.table(game.currentID)
+},1000)
