@@ -1,5 +1,6 @@
 // DOM 
 let currentElement;
+let playagain = document.getElementById("playagain")
 
 // The map and its parent
 let mapDOM = document.querySelector(".container"); // CF line 10
@@ -14,6 +15,7 @@ let bar = document.querySelector("#bar")
 // The warnings and instructions
 let introduction = document.querySelector(".introduction")
 let bouton = document.querySelector(".skipintro")
+
 // let instructions = document.querySelector('.instruction')
 let instru = document.querySelector(".instructionBig")
 let divWarning = document.querySelector(".warning")
@@ -41,10 +43,12 @@ let lamatimer = document.getElementById("lamafill")
 let canStart = false;
 
 //Music Manager
-let music = false;
+let music = true;
 let music_btn = document.querySelector(".music")
 var audio = new Audio('/sounds/Coralie.wav');
 audio.loop = true;
+
+
 
 function launch() {
 
@@ -70,7 +74,7 @@ let n = 0;
 bouton.addEventListener('click', start)
 
 introduction.addEventListener('click', () => {
-
+   
     if (n < intro_msgs.length) {
         introduction.innerHTML = intro_msgs[n];
         n++
@@ -82,6 +86,7 @@ introduction.addEventListener('click', () => {
 
 
 function start() {
+    audio.play();
     introduction.style.visibility = "hidden";
     main.style.visibility = "visible";
     game.createMap();
@@ -89,7 +94,7 @@ function start() {
     //timers : général, lama, pinatino
     game.startTimer();
     game.startLama()
-    game.startSon()
+    // game.startSon()
     renderMap();
 
 
@@ -97,20 +102,32 @@ function start() {
 
 
     // rendering des timers / objets
-    setInterval(() => {
+    let intervalglobal = setInterval(() => {
         spanCarrots.innerHTML = game.numCarrots;
         spanShells.innerHTML = game.numShells;
         spanDrinks.innerHTML = game.numDrinks;
-        lamaFill.innerHTML = game.lamatimer + "%";
-        lamaFill.style.width = game.lamatimer + "%";
-        if (game.lamatimer > 100) game.lamatimer = 100;
+        // lamaFill.innerHTML = game.lamatimer;
+        lamaFill.style.width = (5*game.lamatimer) + "%";
+        sonFill.style.width = (10*game.childtimer) + "%";
+        
+        
+
+        if (game.lamatimer <= 0) {
+            game.lamatimer = 20;
+            losesLife();
+        }
+        if (game.childtimer >= 10){
+            wingame();
+        }
+        console.log(game.lives)
+        numlives.innerHTML = game.lives;
 
     }, 10);
 
     // EVENTS
     //keyboard
     document.addEventListener('keydown', move);
-
+    
     //buttons
     music_btn.addEventListener('click', launch)
 
@@ -119,7 +136,11 @@ function start() {
 
 
 
-    //// LA GESTION DES CAROTTES //// -> to put in method ???
+    //// SHELLS AND CARROTS MANAGEMENT 
+    /// I find that, with these algorithms, a ratio of 4/15 (800/3000) works nice.
+    /// Probably because the algorithm creating is much slower than the one erasing.
+    /// It should be simplified anyway but I'm working on short notice!
+
     setInterval(() => {
         let newrand = game.randomYX();
         let position = game.createCarrots(newrand);
@@ -127,7 +148,7 @@ function start() {
             let newDiv = document.getElementById(position);
             newDiv.classList.add("carrot");
         }
-    }, 800);
+    }, 10000);
 
     setInterval(() => {
 
@@ -136,7 +157,7 @@ function start() {
             let div_to_kill = document.getElementById(position)
             div_to_kill.classList.remove("carrot")
         }
-    }, 3000)
+    }, 12000)
 
     // SHELLS MANAGEMENT
     setInterval(() => {
@@ -147,7 +168,7 @@ function start() {
             newDiv.classList.add("shell");
         }
         return false;
-    }, 10000);
+    }, 800);
 
     setInterval(() => {
 
@@ -156,7 +177,7 @@ function start() {
             let div_to_kill = document.getElementById(position)
             div_to_kill.classList.remove("shell")
         }
-    }, 12000)
+    }, 6000)
 
     //// LA GESTION DES MESSAGES
 
@@ -174,25 +195,46 @@ function start() {
     //     return true;
     // },2000)
 
-    function losesGame() {
-        alert("you fucking lost!!!");
-        mapDOM.style.height = 0;
-        setTimeout(() => {
-            location.reload()
-        }, 5000);
+    function wingame(){
+        clearInterval(intervalglobal)
+        audio.volume = 0;
+        introduction.innerHTML = `<h1>YOU SAVED THE DAY !</h1><p>Yes THE day. Singular. It's not that easy being a single dad slave donkey on paradise, uh? </p>`
+        introduction.style.visibility = "visible";
+        main.style.visibility = "hidden";
     }
+    function losesGame() {
+        clearInterval(intervalglobal)
+        audio.volume = 0;
+        introduction.innerHTML = `<h1>YOU LOST !</h1><p>No biggie. Hunger leading to anger, Pinatino might end as a terrorist but you know, whatever...</p>`
+        introduction.classList.add("reverse-pfiouh")
+        introduction.style.visibility = "visible";
+        main.style.visibility = "hidden";
+        
+        setTimeout(() => {
+            playagain.classList.add("pfiouh")
+            playagain.style.visibility = "visible";
+
+        }, 3000);
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+
+    }
+
+    function reload(){
+        location.reload();
+    }
+    
 
 
     function losesLife() {
-        mapDOM.classList.add('rotate-center')
         game.lives--;
-        game.lamatimer += 5;
-        game.childtimer += 40;
+        mapDOM.classList.add('rotate-center')
         if (game.lives == 0) {
             losesGame();
         }
-        setTimeout(() => mapDOM.classList.remove('rotate-center'), 1000)
     }
+
 
 
     function renderMap() {
@@ -221,34 +263,9 @@ function start() {
         if (e.key == "ArrowRight" || e.key == "d") moveRight(game);
         if (e.key == "ArrowUp" || e.key == "z") moveUp(game);
         if (e.key == "ArrowDown" || e.key == "s") moveDown(game);
-        if (e.code == "Space") {
-
-            // Unload 
-            // Lama
-            if (game.focused == 1 && game.numCarrots > 0 && game.currentID == "lama") {
-                game.numCarrots--;
-                game.lamatimer++;
-            }
-            else if (game.focused == 2 && game.numCarrots > 0 && game.currentID == "lama") {
-                game.numDrinks--;
-                game.lamatimer = 100;
-            }
-            // Home
-            if (game.focused == 1 && game.numCarrots > 0 && game.currentID == "home") {
-                game.numCarrots--;
-                game.childtimer += 5;
-            }
-            else if (game.focused == 2 && game.numDrinks > 0 && game.currentID == "home") {
-                game.numDrinks--;
-                losesLife();
-                alert("Alcool to a child? Dude.")
-            }
-            // Bar
-            if (game.focused == 2 && game.numShells >= 5 && game.currentID == "bar") {
-                game.numShells -= 5;
-                game.numDrinks++;
-            }
-        }
+        if (e.code == "Space") game.swapItems();
+            
+        
 
         if (game.carrotDestroyer(game.currentID)) {
             document.getElementById(game.currentID).classList.remove("carrot");
@@ -257,8 +274,6 @@ function start() {
         if (game.shellsDestroyer(game.currentID)) {
             document.getElementById(game.currentID).classList.remove("shell")
         }
-
-
 
     }
 
@@ -317,12 +332,8 @@ function start() {
         //checks if it can go up
         let result = game.moveUp();
 
-        if (result == "menu") {
-            let previous = focused.previousElementSibling;
-            focused.classList.toggle("focus");
-            previous.classList.toggle("focus");
-        }
-        else if (result == "bar") {
+        
+        if (result == "bar") {
             bar.classList.remove("joker");
             bar.classList.remove("selected");
         }
@@ -353,14 +364,7 @@ function start() {
     }
 
 
-    // functions to check if things go right
 
-    // setInterval(() => {
-
-    //     console.log((game.totalcarrots/game.gametimer).toFixed(2) > 1);
-
-
-    // },1000)
 
 
 

@@ -16,10 +16,11 @@ class Game {
         this.currentID = "00";
 
         //number of items
-        this.numCarrots = 0;
+        this.numCarrots = 10;
         this.numShells = 0;
+        this.totalShells = 0;
         this.lives = 3;
-        this.numDrinks = 5;
+        this.numDrinks = 0;
         this.totalcarrots = 0
 
         //houses
@@ -32,8 +33,8 @@ class Game {
 
         //timers 
         this.time = 0;
-        this.lamatimer = 100;
-        this.childtimer = 100;
+        this.lamatimer = 20;
+        this.childtimer = 0;
         this.gametimer = 0;
         this.totalMinutes = 5;
         this.intervalama;
@@ -45,13 +46,32 @@ class Game {
 
     //Methods
 
+    swapItems(){
+        if (this.currentID == "bar" && this.numShells >= 5){
+            console.log("should works in the bar");
+            this.numShells -= 5;
+            this.numDrinks ++;
+        
+        } else if (this.currentID == "lama" && this.numDrinks >= 3){
+            console.log("should works in the house");
+            this.numDrinks -= 3;
+            this.numCarrots ++;
+            this.lamatimer = 20;
+        }
+        else if (this.currentID == "home" && this.numCarrots > 0){
+            console.log("should works at home");
+            this.numCarrots --;
+            this.childtimer += 1;
+        }
+        else {
+            return false;
+        }
+    }
+
     moveUp() {
 
-        if (this.inHouse == true || this.inHome == true) {
-            if (this.focused > 1) this.focused--;
-            return "menu";
-        }
-
+        if (this.inHouse || this.inHome) return false;
+    
         if (this.inBar == true) {
             "you were in the bar!"
             this.currentID = "94";
@@ -68,7 +88,7 @@ class Game {
 
 
     moveLeft() {
-        if (this.inHouse == true) return false;
+        if (this.inHouse || this.inBar) return false;
         if (this.currentID == "40" || this.currentID == "50") {
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             alert(`entered from ${this.currentID}`)
@@ -90,7 +110,7 @@ class Game {
 
 
     moveRight() {
-        if (this.inHome) return false;
+        if (this.inHome || this.inBar) return false;
         if (this.currentID == 49 || this.currentID == 59) {
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             this.currentID = "home";
@@ -114,7 +134,7 @@ class Game {
     }
 
     moveDown() {
-        if (this.inBar) return false;
+        if (this.inBar || this.inHome || this.inHouse) return false;
 
         if (this.currentID == "94" || this.currentID == "95") {
             this.mapJS[this.currentID[0]][this.currentID[1]] == this.currentID;
@@ -122,19 +142,7 @@ class Game {
             this.inBar = true;
             return "home"
         }
-        if (this.inHouse == true || this.inHome == true) {
-
-            //checks where we are in the menu
-            if (this.focused < 3) {
-                let focused = document.querySelector(".menu.focus");
-                let previous = focused.nextElementSibling;
-                focused.classList.toggle("focus")
-                previous.classList.toggle("focus")
-                this.focused++;
-            }
-            return false;
-        }
-
+       
         if (this.currentID[0] >= 9) return false;
         this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
         this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
@@ -146,7 +154,6 @@ class Game {
     shellsDestroyer(id) {
         for (let i = 0; i < this.shells.length; i++) {
             if (this.shells[i] == id) {
-                console.log(id)
                 this.shells.splice(i, 1);
                 this.numShells++
                 this.mapJS[id[0]][id[1]] == id;
@@ -245,8 +252,8 @@ class Game {
 
         if (this.mapJS[position[0]][position[1]] == "shell" || this.mapJS[position[0]][position[1]] != "joker") {
             
-            this.mapJS[position[0]][position[1]] = "carrot"
-            position = "" + position[0] + position[1]
+            this.mapJS[position[0]][position[1]] = "carrot";
+            position = "" + position[0] + position[1];
             this.carrots.push(position);
             this.totalcarrots++;
             return position;
@@ -257,9 +264,9 @@ class Game {
     destroyCarrots() {
 
         if (this.carrots.length > 1) {
-            let firstcarrot = this.carrots[0]
-            let pos1 = this.carrots[0][1]
-            let pos0 = this.carrots[0][0]
+            let firstcarrot = this.carrots[0];
+            let pos1 = this.carrots[0][1];
+            let pos0 = this.carrots[0][0];
             this.mapJS[pos0][pos1] = this.carrots[0];
             this.carrots.shift();
             return firstcarrot;
@@ -268,10 +275,11 @@ class Game {
     }
 
     createShells(position) {
-        if (this.mapJS[position[0]][position[1]] != "joker" && this.mapJS[position[0]][position[1]] != "carrot") {
-            this.mapJS[position[0]][position[1]] = "shell"
-            position = "" + position[0] + position[1]
-            this.shells.push(position)
+        if (this.mapJS[position[0]][position[1]] != "joker" || this.mapJS[position[0]][position[1]] != "carrot") {
+            this.mapJS[position[0]][position[1]] = "shell";
+            position = "" + position[0] + position[1];
+            this.shells.push(position);
+            this.totalShells++;
             return position;
         }
         return false;

@@ -10,7 +10,34 @@
   list-style-type: none;
 }
 
+.pfiouh{
+  animation:5s pfiouh linear forwards;
+}
+
+@keyframes pfiouh {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.reverse-pfiouh{
+  animation:5s reverse-pfiouh linear forwards;
+}
+
+@keyframes reverse-pfiouh {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
 body{
+  min-width:600px;
   background: url("/img/beachHouse.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -33,8 +60,55 @@ section{
 }
 
 
+
+#playagain{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  visibility: hidden;
+  position:absolute;
+  margin:20% 40%;
+  color:white;
+  height:10vh;
+  width:20vw;
+  text-align:center;
+}
+
+#playagain:hover{
+  background:black;
+}
+
+
 section:hover{
   cursor: pointer;
+}
+
+.green:hover{
+  color:rgb(122, 253, 122);
+}
+
+.under:hover{
+  border-bottom:cyan solid 1px;
+}
+
+.red:hover{
+  color:red;
+}
+
+#answer{
+  color:brown;
+}
+
+strong{
+  font-size:30px;
+}
+strong:hover{
+  color:red;
+}
+
+section img{
+  max-width:50%;
+  max-height:50%;
 }
 
 .introduction button{
@@ -44,10 +118,25 @@ section:hover{
   border-radius:12px;
 }
 
+#toHide{
+  opacity:0;
+  animation:infinite clignote 0.5s forwards;
+}
+
+@keyframes clignote{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1
+  }
+}
+
+
+
 header:hover {
-  opacity: 1;
-  background: white;
-  color: black;
+  background: black;
+  color: white;
 }
 
 header > *:hover {
@@ -106,6 +195,10 @@ header > div {
 
 .hidden {
   visibility: hidden;
+}
+
+.blurry{
+  filter:blur(12px);
 }
 
 main {
@@ -246,7 +339,7 @@ li {
 
 [id="40"],
 [id="50"],[id="49"],[id="59"],[id="94"],[id="95"] {
-  border: solid 1px black;
+  border: solid 1px white;
   background:rgba(0,0,0,0.3)
 }
 
@@ -339,9 +432,8 @@ li {
 
 
 .joker {
-  background: url("/img/donkey.png") rgba(0,0,0,0.3);
+  background: url("/img/donkey.png");
   background-size: 200%;
-  border-radius:50%;
   background-position-y: 40%;
   background-position-x: 40%;
   opacity: 1;
