@@ -49,7 +49,7 @@
   height:100%;
   left:0;
   top:0;
-  background:url(/img/beachHouse.jpg);
+  background:url("./img/beachHouse.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -648,7 +648,7 @@ li {
 
 
 .joker {
-  background: url("/img/donkey.png");
+  background: url("./img/donkey.png");
   background-size: 200%;
   background-position-y: 40%;
   background-position-x: 40%;
@@ -658,14 +658,14 @@ li {
 
 
 .carrot {
-  background: url("/img/noun_Carrot_1595220.png") var(--color-home);
+  background: url("./img/noun_Carrot_1595220.png") var(--color-home);
   background-size: cover;
   transform: scale(1);
 
 }
 
 .shell {
-  background: url("/img/noun_shell_1368913.png") var(--color-bar);
+  background: url("./img/noun_shell_1368913.png") var(--color-bar);
   background-size: cover;
   transform: scale(1);
   border-radius:3px;
