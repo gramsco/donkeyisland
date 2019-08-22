@@ -55,12 +55,12 @@ let canStart = false;
 //Music Manager
 let music = true;
 let music_btn = document.querySelector(".music")
-var audio = new Audio('/sounds/Coralie.wav');
-var carotte = new Audio('/sounds/carotte.mp3')
-var cash = new Audio('/sounds/cashing.mp3')
-var lose = new Audio('/sounds/lose.mp3')
-var lamalaugh = new Audio('/sounds/lamalaugh.mp3')
-var shellsound = new Audio('/sounds/shell.mp3')
+var audio = new Audio('./sounds/Coralie.wav');
+var carotte = new Audio('./sounds/carotte.mp3')
+var cash = new Audio('./sounds/cashing.mp3')
+var lose = new Audio('./sounds/lose.mp3')
+var lamalaugh = new Audio('./sounds/lamalaugh.mp3')
+var shellsound = new Audio('./sounds/shell.mp3')
 
 audio.loop = true;
 audio.volume = 1;
