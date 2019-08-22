@@ -63,12 +63,13 @@ var cash = new Audio('.././sounds/cashing.mp3')
 var lose = new Audio('.././sounds/lose.mp3')
 var lamalaugh = new Audio('.././sounds/lamalaugh.mp3')
 
-audio.loop = true;
-audio.volume = 1;
+
 
 
 function launch() {
-
+    audio.loop = true;
+    audio.volume = 1;
+    
     if (music) {
         music = false;
         audio.volume = 0;
