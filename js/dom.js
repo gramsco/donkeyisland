@@ -6,15 +6,22 @@ let playagain = document.getElementById("playagain")
 let mapDOM = document.querySelector(".container"); // CF line 10
 let bigContainer = document.querySelector(".bigContainer")
 let main = document.querySelector("main")
+let bg = document.querySelector(".bg");
+let pressSpace = document.querySelector(".pressSpace");
 
 // The houses
-let lama = document.querySelector(".lama")
+let lama = document.querySelector("#lama")
 let home = document.querySelector(".home")
 let bar = document.querySelector("#bar")
 
-let str =`<i class="fas fa-horse-head"></i>`;
+let str =`<div><i class="fas fa-horse-head"></i></div>`;
+
 // The warnings and instructions
+let section = document.querySelector("section")
 let introduction = document.querySelector(".introduction")
+let arrowRight = document.getElementById("arrowRight")
+let arrowLeft = document.getElementById("arrowLeft")
+let arrows = document.querySelector(".arrows")
 let bouton = document.querySelector(".skipintro")
 
 // let instructions = document.querySelector('.instruction')
@@ -22,10 +29,12 @@ let instru = document.querySelector(".instructionBig")
 let divWarning = document.querySelector(".warning")
 let img_warning = document.getElementById("img_warning")
 let warning = document.getElementById("txt_warning")
+let loselife = document.querySelector(".loseLife")
+
 
 //The Spans to update
 let lamaFill = document.getElementById("lamafill")
-let sonFill = document.getElementById("sonfill")
+// let sonFill = document.getElementById("sonfill")
 
 //Items carried and lives
 let spanCarrots = document.getElementById("numCarrots");
@@ -54,17 +63,30 @@ var lamalaugh = new Audio('/sounds/lamalaugh.mp3')
 var shellsound = new Audio('/sounds/shell.mp3')
 
 audio.loop = true;
-
+audio.volume = 1;
 
 
 function launch() {
 
-    music = !music;
-    audio.volume = 0;
-
-    if (music == true) {
+    if (music) {
+        music = false;
+        audio.volume = 0;
+        carotte.volume = 0;
+        cash.volume = 0;
+        lose.volume = 0;
+        lamalaugh = 0;
+        shellsound.volume = 0;
+        music_btn.innerHTML = `<i class="fas fa-volume-mute"></i>`
+    }
+    else {
+        music = true;
         audio.volume = 1;
-        audio.play();
+        carotte.volume = 1;
+        cash.volume = 1;
+        lose.volume = 1;
+        lamalaugh.volume = 1;
+        shellsound.volume = 1;
+        music_btn.innerHTML = `<i class="fas fa-volume-up"></i>`
     }
 }
 
@@ -80,7 +102,7 @@ let n = 0;
 
 bouton.addEventListener('click', start)
 
-introduction.addEventListener('click', () => {
+arrowRight.addEventListener('click', () => {
    
     if (n < intro_msgs.length) {
         introduction.innerHTML = intro_msgs[n];
@@ -93,8 +115,10 @@ introduction.addEventListener('click', () => {
 
 
 function start() {
+    main.classList.add("pfiouh")
+    bg.classList.add("blur")
     audio.play();
-    introduction.style.visibility = "hidden";
+    section.style.visibility = "hidden";
     main.style.visibility = "visible";
     game.createMap();
 
@@ -115,15 +139,22 @@ function start() {
         spanDrinks.innerHTML = game.numDrinks + " ";
         // lamaFill.innerHTML = game.lamatimer;
         lamaFill.style.width = (5*game.lamatimer) + "%";
-        sonFill.style.width = (10*game.childtimer) + "%";
-        
-        
-
-        if (game.lamatimer <= 0) {
-            game.lamatimer = 20;
-            losesLife();
-            lose.play();
+        // sonFill.style.width = (10*game.childtimer) + "%";
+        if (game.currentID == "00" || game.currentID == "10") {
+            pressSpace.classList.add("bipbip");
+            pressSpace.style.visibility = "visible"
+        } 
+        else{
+            pressSpace.classList.remove("bipbip");
+            pressSpace.style.visibility = "hidden"
         }
+        
+        if (game.lamatimer <= 0) {
+            game.lamatimer = 25;
+            mapDOM.className = "container"
+            losesLife();            
+        }
+
         if (game.childtimer >= 10){
             wingame();
         }
@@ -148,32 +179,39 @@ function start() {
     /// Probably because the algorithm creating is much slower than the one erasing.
     /// It should be simplified anyway but I'm working on short notice!
 
-    setInterval(() => {
-        let newrand = game.randomYX();
-        let position = game.createCarrots(newrand);
-        if (position) {
-            let newDiv = document.getElementById(position);
-            newDiv.classList.add("carrot");
-        }
-    }, 10000);
 
-    setInterval(() => {
+    // setInterval(() => {
+    //     let newrand = game.randomYX();
+        
+    //     let position = game.createCarrots(newrand);
+    //     if (position) {
+    //         let newDiv = document.getElementById(position);
+    //         newDiv.classList.add("carrot");
+    //     }
+    // }, 1000);
 
-        let position = game.destroyCarrots();
-        if (position) {
-            let div_to_kill = document.getElementById(position)
-            div_to_kill.classList.remove("carrot")
-        }
-    }, 12000)
+    // setInterval(() => {
+
+    //     let position = game.destroyCarrots();
+    //     if (position) {
+    //         let div_to_kill = document.getElementById(position)
+    //         div_to_kill.classList.remove("carrot")
+    //     }
+    // }, 12000)
 
     // SHELLS MANAGEMENT
     setInterval(() => {
         let newrand = game.randomYX();
-        let position = game.createShells(newrand);
-        if (position) {
+        if (newrand == "00" || newrand == "10" || newrand == "94" || newrand == "95"  || newrand == "89" || newrand == "99"){
+            return false;
+        }
+        else {
+            let position = game.createShells(newrand);
+            if (position) {
             let newDiv = document.getElementById(position);
             newDiv.classList.add("shell");
         }
+    }
         return false;
     }, 800);
 
@@ -233,13 +271,23 @@ function start() {
     }
     
 
-
     function losesLife() {
+       
         game.lives--;
+        bigContainer.classList.add("blur")
         mapDOM.classList.add('rotate-center')
+        loselife.style.visibility = "visible"
+
         if (game.lives == 0) {
             losesGame();
+            
         }
+        setTimeout(() => {
+            bigContainer.classList.remove("blur");
+            mapDOM.classList.remove('rotate-center');
+            loselife.style.visibility = "hidden";
+        }, 1000);    
+        
     }
 
 
@@ -271,8 +319,15 @@ function start() {
         if (e.key == "ArrowUp" || e.key == "z") moveUp(game);
         if (e.key == "ArrowDown" || e.key == "s") moveDown(game);
         if (e.code == "Space") {
-            game.swapItems();
-            cash.play()
+            let swap = game.swapItems();
+            if (swap == "bar"){
+                cash.play()
+            }
+            else if (swap == "lama"){
+                console.log("lama should laugh")
+                lamalaugh.play()
+            }
+            
         }
             
         
@@ -314,6 +369,7 @@ function start() {
 
 
     function moveRight(e) {
+        console.log(game.currentID)
         let currentElement = document.getElementById(game.currentID)
         currentElement.classList.remove("joker");
 

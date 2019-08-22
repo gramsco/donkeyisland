@@ -5,27 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SandBox</title>
-    <link rel="stylesheet" href="./fontawesome-free-5.10.1-web/css/all.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.10.1-web/css/all.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Acme&display=swap"
       rel="stylesheet"
     />
-  
   </head>
-
+  <div class="bg"></div>
   <body>
-    <div id="playagain">Play again?</div>
-    <section class="introduction pfiouh">
-      
-      <div class="cont_intro">
-        <h1 class="under">Oh... hi there.</h1>
-        <br/>
-        <h3>Would you say your life is comfortable?</h3>
-        <h2 class="under"><span class="green">YES </span> | <span class="red"> NO</span></h2>
+      <div class="pressSpace bipbip">
+          <div>(press space to give the items)</div>
+        </div>
+
+      <div class="loseLife">
+        <div>YOU LOST A LIFE :-(</div>
       </div>
 
-      <button class="skipintro">(skip this magnificient introduction)</button>
+    <div id="playagain">Play again?</div>
+
+    <section class="pfiouh">
+      <div class="introduction">
+        <h1 class="under">Oh... hi there.</h1>
+        <h3>Do you think your life is easy?</h3>
+      </div>
+
+      <div class="widget">
+        <i id="arrowRight" class="fas fa-arrow-right"></i>
+        <button class="skipintro">skip this magnificient introduction</button>
+      </div>
     </section>
 
     <main>
@@ -34,35 +42,52 @@
       <header>
         <div class="instruction">Instructions</div>
         <h1>Donkey Island</h1>
-        <div class="music">Music</div>
+        <div class="music"><i class="fas fa-volume-up"></i></div>
       </header>
 
       <div class="objects">
-        <h3>You have</h3>
-        <div class="menu ">
-          <h2 id="numLives"></h2>
+        <div class="items">
+          <div><h3>You have : </h3></div>
         </div>
-        <div>
-          <div class="menu "><span id="numCarrots"> </span> <i class="fas fa-carrot"></i></div>
-          <div class="menu"><span id="numBeers">0</span> <i class="fas fa-cocktail"></i></div>
-          <div class="menu "><span id="numShells">0</span><i class="fas fa-dollar-sign"></i>hell<i class="fas fa-dollar-sign"></i></div>
+
+        <div class="items2" id="numLives"></div>
+
+        <div class="items">
+          <div>
+            <span id="numCarrots">0</span><i class="fas fa-carrot"></i>
+          </div>
+
+          <div>
+            <span id="numBeers">0</span><i class="fas fa-wine-bottle"></i>
+          </div>
+
+          <div>
+            <span id="numShells">0</span><i class="fas fa-dollar-sign"></i>
+          </div>
+          
         </div>
       </div>
 
       <div class="bigContainer">
-        <div class="lama"><h2 id="lama">Lama del Rey's villa<i class="fas fa-home"></i></h2></div>
+        <div id="lama">
+            <img src="img/noun_Geometric Llama_1514526.png">
+            <!-- <p>0</p> = <i class="fas fa-skull-crossbones"></i> -->
+          
+        </div>
         <div class="container"></div>
-        <img id="home" class="home" src="/img/fishery.svg" />
+        <img id="home" class="home" src="/img/noun_House_2801037.png" />
       </div>
 
       <div class="down">
-        <div>
-          <h3>Lama del Rey</h3>
+        <div class="msg">
+          <h3>Lama del Rey says:</h3>
           <span id="lamaText">"Get back to work!!!"</span>
         </div>
-        <div id="bar">O'SmartAss<p><i class="fas fa-wine-bottle"></i></p></div>
-        <div>
-          <h3>Piñatino</h3>
+        <div id="bar">
+          <img src="img/noun_Bar_2542914.png">
+        </div>
+        <div class="msg">
+          <h3>Piñatino says:</h3>
           <span id="sonText">"Dad... I'm so hungry..."</span>
         </div>
       </div>
@@ -76,9 +101,7 @@
         <div class="timer1">
           <div class="tofill" id="lamafill"></div>
         </div>
-        <div class="timer2">
-          <div class="tofill2" id="sonfill"></div>
-        </div>
+        
       </footer>
 
       <script src="./js/messages.js"></script>

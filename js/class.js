@@ -20,7 +20,7 @@ class Game {
         this.numShells = 0;
         this.totalShells = 0;
         this.lives = 4;
-        this.numDrinks = 0;
+        this.numDrinks = 3;
         this.totalcarrots = 0
 
         //houses
@@ -34,7 +34,7 @@ class Game {
         //timers 
         this.time = 0;
         // this.lamatimer = 20;
-        this.lamatimer = 20;
+        this.lamatimer = 25;
         this.childtimer = 0;
         this.gametimer = 0;
         this.totalMinutes = 5;
@@ -52,17 +52,20 @@ class Game {
             console.log("should works in the bar");
             this.numShells -= 5;
             this.numDrinks ++;
+            return "bar"
         
         } else if (this.currentID == "lama" && this.numDrinks >= 3){
             console.log("should works in the house");
             this.numDrinks -= 3;
             this.numCarrots ++;
             this.lamatimer = 20;
+            return "lama"
         }
         else if (this.currentID == "home" && this.numCarrots > 0){
             console.log("should works at home");
             this.numCarrots --;
             this.childtimer += 1;
+            return "home"
         }
         else {
             return false;
@@ -97,7 +100,7 @@ class Game {
             return "lama";
         }
         if (this.currentID == "home") {
-            this.currentID = "49";
+            this.currentID = "99";
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             this.inHome = false;
             return "home";
@@ -111,7 +114,7 @@ class Game {
 
     moveRight() {
         if (this.inHome || this.inBar) return false;
-        if (this.currentID == 49 || this.currentID == 59) {
+        if (this.currentID == 89 || this.currentID == 99) {
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             this.currentID = "home";
             this.inHome = true;
