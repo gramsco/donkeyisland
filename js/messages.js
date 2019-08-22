@@ -1,39 +1,15 @@
-let msgs = [
 
-    {
-        name: "Lama Del Rey",
-        img: "./img/lama.jpg",
-        messages:
-
-            [
-                "Did I tell you about the party we had at the Villa, yesterday? We threw all of your carrots at the sea with some friends. Such a nice party.",
-                "You know, you're not the worst Donkey that worked for me... but pretty close.",
-                "You call that work ?"
-            ],
-        sound: "/sounds/to_check.wav"
-    },
-    {
-        name: "Piñatiño", 
-        img:"./img/pinatino.jpeg",
-        messages: [
-            "Dad, I'm so Hungry...", "Do I have to work for mister Rey, too?"
-        ],
-        sound: "/sound/to_check2.wav"
-    }
-
-]
 
 let intro_msgs = [
-    `<h1 class="under">WELL I DON'T CARE</h1><h3 class="under">You know why?</h3><i id="answer">"No, wise person, tell me why !"<span id="toHide"> (That's you)</span></i>`,
-    `<h1 class="under">Why, you ask?</h1><h3 class="under">Because on an island, far away...</h3>`,
-    `<h1 class="under">JOKER THE LITTLE DONKEY</h1><img src="./img/Donkey.gif"><h3 class="under">... is struggling. </h3><h3 class="under">But why ?</h3>`,
-    `<h1 class="under">LAMA DEL REY</H1><img src="./img/lama.jpg"></p><p class="under">The fierce and alcoholic master of the Isle demands a lot of booze</p>`,
-    `<h1 class="under">PINATINO</h1><img src="./img/pinatino.jpeg"><p class="under">Your son, asks for many carrots. More than a single donkey can absorbe you say? Well you're right.</p>`,
-    `<h1 class="under">THE BARMAN</h1><p class="under">Well it's a barman. Ya don't need a picture</p><p class="under">You give him money and he gives you booze. The currency in Donkey Island is <strong>$hell$</strong></p>`,
-    `<h1 class="under"> WEEP NO MORE, STRANGER...</h1><h3 class="under">for you can HELP little Joker. And here is how...</h3>`,
-    `<h1 class="under"> Here are the guidelines </h1><h3 class="under">5 $hell$ = 1 <i class="fas fa-wine-bottle"><h3 class="under">3 <i class="fas fa-wine-bottle"> = 1 carrot</h3><h3>The day's done when Pinatino ate 10 carrots.</h3>`,
-    `<h1 class="under"> Here are the commands </h1><h3><i class="fas fa-arrows-alt">: move on the beach</i><h3><i class="far fa-square"></i> : the entrance of a place, the bar (south), the Lama's place (west) and your home (east). </h3><h3><i class="fas fa-keyboard"></i> : Press SPACE or ENTER to give the appropriate object.</h3>`,
-    `<h1 class="under">PRETTY SIMPLE RIGHT ? EVEN FOR YOU</h1>`,
+   `<div>Have you heard about <span id="toHide">Donkey Island</span> and its inhabitants? Let me brief you...</div>`,
+   `<div>Let's take <span id="toHide">Joker</span>, for instance.</div><div>Joker is a donkey. A honest-to-God, working class, donkey.</div><div>His life is hard. Like really, really, hard. I mean, just look at the facts:</div>`,
+   `<div><b>Every day</b>, he has to bring home <span id="toHide">15 carrots</span> for his son Piñatino to eat.<div>But who owns all the carrots of Donkey Island? <span id="toHide">Lama Del Rey.</span></div>`,
+   `<div>That’s right: a lama. And not your average, spitting lama. No, a drunk, crazy and violent lama.</div><div>His motto is: <span id="toHide">booze for me = no bruise for you<span id="toHide"></div><div>Joker and Del Rey made a deal:</div><div>In exchange for a single carrot, Joker has to bring Del Rey <span id="toHide">3 bottles every 20 seconds</span>. If he fails, our brave donkey gets punched.</div>`,
+   `<div>But where to find the booze, you ask? That one is easy: in a bar.</div><div><span id="toHide">O’Smart Ass</span>, the local bar, only accepts the local currency: $hells.</div><div>Which is a good thing actually, because you can find a lot on the beach. The barman is just to lazy to pick 'em up.</div>Usually, <span id="toHide">a beer is worth 5 $hells.</span>`,
+   `<div>Let’s recap.</div><div>Joker needs to bring his son <span id="toHide">15 carrots.<span id="toHide"></div><div>To obtain a single carrot, he must bring Lama Del Rey <span id="toHide">3 bottles of alcohol.</span></div><div>A bottle is worth <span id="toHide">5 $hells.</span></div>`,
+   `<div>Easy you think? Well...</div><div>Let’s see. You're Joker the donkey, today.</div>`,
+   `<div>To move around, use the arrows on your <span id="toHide"><i class="far fa-keyboard"></i></span></div><div>To collect $hells, just step on it.</div><div>To swap items you must be in the <span id="toHide"><i class="far fa-square"></i></span> in front of the corresponding location: <div>The Bar <i class="fas fa-arrow-circle-down"></i></div><div>Lama's house <i class="fas fa-arrow-circle-left"></i></div><div>Your own Home <i class="fas fa-arrow-circle-right"></i></div></div>`,
+   `<div>Good Luck.</div>`
 ]
 
 

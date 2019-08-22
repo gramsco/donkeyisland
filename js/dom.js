@@ -24,7 +24,7 @@ let arrowLeft = document.getElementById("arrowLeft")
 let arrows = document.querySelector(".arrows")
 let bouton = document.querySelector(".skipintro")
 
-// let instructions = document.querySelector('.instruction')
+let instructions = document.querySelector('.instruction')
 let instru = document.querySelector(".instructionBig")
 let divWarning = document.querySelector(".warning")
 let img_warning = document.getElementById("img_warning")
@@ -38,9 +38,11 @@ let lamaFill = document.getElementById("lamafill")
 
 //Items carried and lives
 let spanCarrots = document.getElementById("numCarrots");
-let spanShells = document.getElementById("numShells")
-let spanDrinks = document.getElementById("numBeers")
+let spanShells = document.getElementById("numShells");
+let spanDrinks = document.getElementById("numBeers");
 let numlives = document.getElementById("numLives");
+let carrotsToGo = document.getElementById("carrotsToGo");
+let carrotContainer = document.querySelector(".carrotsToGooo");
 
 
 //menu
@@ -55,12 +57,11 @@ let canStart = false;
 //Music Manager
 let music = true;
 let music_btn = document.querySelector(".music")
-var audio = new Audio('./sounds/Coralie.wav');
-var carotte = new Audio('./sounds/carotte.mp3')
-var cash = new Audio('./sounds/cashing.mp3')
-var lose = new Audio('./sounds/lose.mp3')
-var lamalaugh = new Audio('./sounds/lamalaugh.mp3')
-var shellsound = new Audio('./sounds/shell.mp3')
+var audio = new Audio('.././sounds/Coralie.wav');
+var carotte = new Audio('.././sounds/ding.mp3');
+var cash = new Audio('.././sounds/cashing.mp3')
+var lose = new Audio('.././sounds/lose.mp3')
+var lamalaugh = new Audio('.././sounds/lamalaugh.mp3')
 
 audio.loop = true;
 audio.volume = 1;
@@ -75,7 +76,6 @@ function launch() {
         cash.volume = 0;
         lose.volume = 0;
         lamalaugh = 0;
-        shellsound.volume = 0;
         music_btn.innerHTML = `<i class="fas fa-volume-mute"></i>`
     }
     else {
@@ -85,7 +85,6 @@ function launch() {
         cash.volume = 1;
         lose.volume = 1;
         lamalaugh.volume = 1;
-        shellsound.volume = 1;
         music_btn.innerHTML = `<i class="fas fa-volume-up"></i>`
     }
 }
@@ -100,8 +99,9 @@ let chrono = 0;
 
 let n = 0;
 
-bouton.addEventListener('click', start)
 
+
+bouton.addEventListener('click', start)
 arrowRight.addEventListener('click', () => {
    
     if (n < intro_msgs.length) {
@@ -115,8 +115,23 @@ arrowRight.addEventListener('click', () => {
 
 
 function start() {
+
+    document.addEventListener('mouseover',show)
+
+    function show(e){
+       
+        if (e.target == instructions){
+            instru.classList.add("visible");
+        }
+        else {
+            instru.classList.remove("visible");
+        }
+
+    }
+
+
     main.classList.add("pfiouh")
-    bg.classList.add("blur")
+    // bg.classList.add("blur")
     audio.play();
     section.style.visibility = "hidden";
     main.style.visibility = "visible";
@@ -137,10 +152,11 @@ function start() {
         spanCarrots.innerHTML = game.numCarrots + " ";
         spanShells.innerHTML = game.numShells + " ";
         spanDrinks.innerHTML = game.numDrinks + " ";
+        carrotsToGo.innerHTML = game.carrotsGoal;
         // lamaFill.innerHTML = game.lamatimer;
         lamaFill.style.width = (5*game.lamatimer) + "%";
         // sonFill.style.width = (10*game.childtimer) + "%";
-        if (game.currentID == "00" || game.currentID == "10") {
+        if (game.currentID == "00" || game.currentID == "10" || game.currentID == "89" || game.currentID == "99" || game.currentID == "94" || game.currentID == "95") {
             pressSpace.classList.add("bipbip");
             pressSpace.style.visibility = "visible"
         } 
@@ -155,7 +171,7 @@ function start() {
             losesLife();            
         }
 
-        if (game.childtimer >= 10){
+        if (game.childtimer >= 15){
             wingame();
         }
         numlives.innerHTML = (str + " ").repeat(game.lives)
@@ -169,35 +185,8 @@ function start() {
     //buttons
     music_btn.addEventListener('click', launch)
 
-    //swipe... stay put.
+    //swipe... stay put...
 
-
-
-
-    //// SHELLS AND CARROTS MANAGEMENT 
-    /// I find that, with these algorithms, a ratio of 4/15 (800/3000) works nice.
-    /// Probably because the algorithm creating is much slower than the one erasing.
-    /// It should be simplified anyway but I'm working on short notice!
-
-
-    // setInterval(() => {
-    //     let newrand = game.randomYX();
-        
-    //     let position = game.createCarrots(newrand);
-    //     if (position) {
-    //         let newDiv = document.getElementById(position);
-    //         newDiv.classList.add("carrot");
-    //     }
-    // }, 1000);
-
-    // setInterval(() => {
-
-    //     let position = game.destroyCarrots();
-    //     if (position) {
-    //         let div_to_kill = document.getElementById(position)
-    //         div_to_kill.classList.remove("carrot")
-    //     }
-    // }, 12000)
 
     // SHELLS MANAGEMENT
     setInterval(() => {
@@ -242,38 +231,48 @@ function start() {
 
     function wingame(){
         clearInterval(intervalglobal)
+        bg.classList.add("unblur")
+        bg.classList.remove('blur')
         audio.volume = 0;
-        introduction.innerHTML = `<h1>YOU SAVED THE DAY !</h1><p>Yes THE day. Singular. It's not that easy being a single dad slave donkey on paradise, uh? </p>`
+        introduction.innerHTML = `<h1>YOU SAVED THE DAY !</h1><p>Enjoy the view.</p>`
         introduction.style.visibility = "visible";
+        introduction.classList.add("reverse-pfiouh")
         main.style.visibility = "hidden";
+        section.style.visibility = "hidden";
+        pressSpace.style.visibility = "hidden";
+        setTimeout(() => {
+            location.reload();
+        }, 25000);
     }
+
     function losesGame() {
         clearInterval(intervalglobal)
         audio.volume = 0;
-        introduction.innerHTML = `<h1>YOU LOST !</h1><p>No biggie. Hunger leading to anger, Pinatino might end as a terrorist but you know, whatever...</p>`
+        introduction.innerHTML = `<h1>YOU LOST !</h1><p>Your son Piñatino will probably eat you.</p>`
         introduction.classList.add("reverse-pfiouh")
         introduction.style.visibility = "visible";
         main.style.visibility = "hidden";
+        bg.classList.remove('blur');
+        bg.style.backgroundImage = `url("./img/bonnet-ane-capirote.jpg")`
         
         setTimeout(() => {
             playagain.classList.add("pfiouh")
             playagain.style.visibility = "visible";
 
-        }, 3000);
+        }, 8000);
+        
         setTimeout(() => {
             location.reload();
-        }, 10000);
+        }, 13000);
 
     }
 
-    function reload(){
-        location.reload();
-    }
     
 
     function losesLife() {
        
         game.lives--;
+        lose.play();
         bigContainer.classList.add("blur")
         mapDOM.classList.add('rotate-center')
         loselife.style.visibility = "visible"
@@ -324,8 +323,14 @@ function start() {
                 cash.play()
             }
             else if (swap == "lama"){
-                console.log("lama should laugh")
                 lamalaugh.play()
+            }
+            else if (swap == "home"){
+                carotte.play();
+                carrotContainer.style.visibility = "visible";
+                setTimeout(() => {
+                    carrotContainer.style.visibility = "hidden"
+                }, 2000);
             }
             
         }

@@ -19,10 +19,11 @@ class Game {
         this.numCarrots = 0;
         this.numShells = 0;
         this.totalShells = 0;
-        this.lives = 4;
-        this.numDrinks = 3;
+        this.lives = 3;
+        this.numDrinks = 0;
         this.totalcarrots = 0
-
+        this.carrotsGoal = 15;
+    
         //houses
         this.inHouse = false;
         this.inHome = false;
@@ -34,7 +35,7 @@ class Game {
         //timers 
         this.time = 0;
         // this.lamatimer = 20;
-        this.lamatimer = 25;
+        this.lamatimer = 20;
         this.childtimer = 0;
         this.gametimer = 0;
         this.totalMinutes = 5;
@@ -48,22 +49,20 @@ class Game {
     //Methods
 
     swapItems(){
-        if (this.currentID == "bar" && this.numShells >= 5){
-            console.log("should works in the bar");
+        if ((this.currentID == 94 || this.currentID == 95) && this.numShells >= 5){
             this.numShells -= 5;
             this.numDrinks ++;
             return "bar"
         
-        } else if (this.currentID == "lama" && this.numDrinks >= 3){
-            console.log("should works in the house");
+        } else if ((this.currentID == "00" || this.currentID == "10") && this.numDrinks >= 3){
             this.numDrinks -= 3;
             this.numCarrots ++;
             this.lamatimer = 20;
             return "lama"
         }
-        else if (this.currentID == "home" && this.numCarrots > 0){
-            console.log("should works at home");
+        else if ((this.currentID == 89 || this.currentID == 99) && this.numCarrots > 0){
             this.numCarrots --;
+            this.carrotsGoal--;
             this.childtimer += 1;
             return "home"
         }
@@ -73,18 +72,7 @@ class Game {
     }
 
     moveUp() {
-
-        if (this.inHouse || this.inHome) return false;
-    
-        if (this.inBar == true) {
-            "you were in the bar!"
-            this.currentID = "94";
-            this.inBar = false;
-            return "bar";
-        }
-
-        if (this.currentID[0] <= 0) return false;
-        
+        if (this.currentID[0] <= 0) return false;        
         this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
         this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${(Number(this.currentID[0]) - 1) + this.currentID[1]}`
@@ -92,19 +80,6 @@ class Game {
 
 
     moveLeft() {
-        if (this.inHouse || this.inBar) return false;
-        if (this.currentID == "00" || this.currentID == "10") {
-            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
-            this.currentID = "lama";
-            this.inHouse = true;
-            return "lama";
-        }
-        if (this.currentID == "home") {
-            this.currentID = "99";
-            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
-            this.inHome = false;
-            return "home";
-        }
         if (this.currentID[1] <= 0) return false;
         this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
         this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
@@ -113,23 +88,8 @@ class Game {
 
 
     moveRight() {
-        if (this.inHome || this.inBar) return false;
-        if (this.currentID == 89 || this.currentID == 99) {
-            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
-            this.currentID = "home";
-            this.inHome = true;
-            return "home"
-        }
-        if (this.inHouse == true) {
-            this.currentID = "00";
-            this.inHouse = false;
-            this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
-            
-            return "lama"
-        }
-
+        
         if (this.currentID[1] >= 9) return false;
-
         this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
         this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${this.currentID[0] + (Number(this.currentID[1]) + 1)}`
@@ -137,21 +97,11 @@ class Game {
     }
 
     moveDown() {
-        if (this.inBar || this.inHome || this.inHouse) return false;
-
-        if (this.currentID == "94" || this.currentID == "95") {
-            this.mapJS[this.currentID[0]][this.currentID[1]] == this.currentID;
-            this.currentID = "bar";
-            this.inBar = true;
-            return "bar"
-        }
-       
         if (this.currentID[0] >= 9) return false;
         this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
         this.mapJS[this.currentID[0]][this.currentID[1]] = "joker";
         this.currentID = `${(Number(this.currentID[0]) + 1) + this.currentID[1]}`
         return true;
-
     }
 
     shellsDestroyer(id) {
@@ -191,6 +141,7 @@ class Game {
     }
 
     startTimer() {
+
         this.intervalama = setInterval(() => {
 
             this.gametimer ++
@@ -206,9 +157,19 @@ class Game {
     }
 
     startLama() {
-        this.intervalama = setInterval(() => {
-            this.lamatimer -= 1;
-        }, 1000);
+        setTimeout(() => {
+            this.intervalama = setInterval(() => {
+                this.lamatimer -= 1;
+            }, 1000);
+        }, 3000);
+        
+    }
+
+    stopLama(){
+        clearInterval(this.intervalama);
+        setTimeout(() => {
+            startLama()
+        }, 2000);
     }
 
     startSon() {
@@ -239,14 +200,6 @@ class Game {
             this.mapJS.push(sub_arr);
         }
         return this.currentID;
-    }
-
-    win() {
-
-        let bigdom = document.querySelector("body");
-        bigdom.innerHTML = ""
-        bigdom.style.background = `url("donkey_boat.jpg")`
-
     }
 
 

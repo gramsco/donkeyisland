@@ -56,6 +56,29 @@
   background-size: cover;
 }
 
+.unblur{
+  
+    animation:unblurdetoi linear 5s forwards;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+
+@keyframes unblurdetoi{
+
+  to {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  }
+}
+
+
+
 .blur{
   animation:floudetoi linear 5s forwards;
   -webkit-filter: blur(0px);
@@ -64,6 +87,7 @@
   -ms-filter: blur(0px);
   filter: blur(0px);
 }
+
 
 @keyframes floudetoi{
 
@@ -113,9 +137,6 @@ section{
   height:10vh;
   width:20vw;
   text-align:center;
-}
-
-#playagain:hover{
   background:black;
 }
 
@@ -125,6 +146,18 @@ section{
   justify-content:center;
   align-content: center;
   width:auto;
+}
+
+.widget:first-child{
+  font-size: 2rem;
+}
+
+
+
+.skipintro{
+  margin-top:5%;
+  color:gold;
+  cursor:pointer;
 }
 
 
@@ -139,7 +172,32 @@ section{
   margin:0 auto;
   cursor: pointer;
   width:fit-content;
+  font-size: 2rem;
 }
+
+.carrotsToGooo{
+  visibility: hidden;
+  top:20%;
+  left:5%;
+  position:fixed;
+  font-size:10vw;
+  padding:0;
+  color:white;
+  height:100%;
+  width:100%;
+  z-index: 999999999;
+}
+
+#arrowRight:hover{
+  animation:moveRight linear infinite 0.5s forwards;
+}
+
+@keyframes moveRight{
+  to {
+    transform:rotate(360deg)
+  }
+}
+
 
 
 
@@ -175,32 +233,26 @@ section img{
 .introduction{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border-bottom:1px white solid;
+  justify-content: space-between;
   height:auto;
-}
-
-.introduction img{
   width:50%;
-  height:50%;
-  text-align:center;
+  font-size:1.2rem;
 }
 
-.introduction button{
-  width:auto;
-  height:auto;
-  text-align:center;
-  border-radius:12px;
+.introduction div{
+  padding:2%;
 }
+
+
+
 .introduction h1{
   background:rgba(0, 0, 0, 0.5);
 }
 
-
-#toHide{
+.toHide{
   opacity:0;
-  color:white;
-  animation:infinite clignote 0.5s forwards;
+  color:gold;
+  animation:infinite clignote 1s forwards;
 }
 
 @keyframes clignote{
@@ -250,9 +302,11 @@ header {
 }
 
 .instructionBig {
+  visibility: hidden;
   position: fixed;
   top: 15vh;
   background: black;
+  color:white;
   z-index: 51;
   height: 100%;
   width: 100%;
@@ -275,9 +329,6 @@ header {
   visibility: hidden;
 }
 
-.blurry{
-  filter:blur(12px);
-}
 
 main {
   visibility: hidden;
@@ -422,6 +473,7 @@ li {
 }
 
 .container {
+  cursor:none;
   padding: 2%;
   display: grid;
   grid-template-columns: repeat(10, 10%);
@@ -591,8 +643,10 @@ li {
 }
 
 .loseLife > div{
+  border-radius:15px;
   padding:2%;
-  background:red;
+  background:var(--color-lama);
+  color:white;
 }
 
 
@@ -648,24 +702,22 @@ li {
 
 
 .joker {
-  background: url("./img/donkey.png");
+  background: url(".././img/donkey.png");
   background-size: 200%;
   background-position-y: 40%;
   background-position-x: 40%;
   opacity: 1;
 }
 
-
-
+/* 
 .carrot {
-  background: url("./img/noun_Carrot_1595220.png") var(--color-home);
+  background: url(".././img/noun_Carrot_1595220.png") var(--color-home);
   background-size: cover;
   transform: scale(1);
-
-}
+} */
 
 .shell {
-  background: url("./img/noun_shell_1368913.png") var(--color-bar);
+  background: url(".././img/noun_shell.png") var(--color-bar);
   background-size: cover;
   transform: scale(1);
   border-radius:3px;

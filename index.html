@@ -5,34 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SandBox</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Acme&display=swap"
       rel="stylesheet"
     />
   </head>
-  <div class="bg"></div>
+  <div class="bg blur"></div>
   <body>
-      <div class="pressSpace bipbip">
-          <div>(press space to give the items)</div>
-        </div>
-
-      <div class="loseLife">
-        <div>YOU LOST A LIFE :-(</div>
+    <!-- These are all messages that appear -->
+    <div class="instructionBig">
+      <h2>Let’s recap.</h2>
+      <div>
+        Joker needs to bring his son <span class="toHide">15 carrots.</span>
       </div>
+      <div>
+        To obtain a single carrot, he must bring Lama Del Rey
+        <span class="toHide">3 bottles of alcohol.</span>
+      </div>
+      <div>A bottle is worth <span class="toHide">5 $hells.</span></div>
+      <div>
+        To move around, use the arrows on your
+        <span class="toHide"><i class="far fa-keyboard"></i></span>
+      </div>
+      <div>To collect $hells, just step on it.</div>
+      <div>
+        To swap items you must be in the
+        <span class="toHide"><i class="far fa-square"></i></span> in front of
+        the corresponding location
+      </div>
+      <div>The Bar <i class="fas fa-arrow-circle-down"></i></div>
+      <div>Lama's house <i class="fas fa-arrow-circle-left"></i></div>
+      <div>Your own Home <i class="fas fa-arrow-circle-right"></i></div>
+    </div>
 
-    <div id="playagain">Play again?</div>
+    <div class="pressSpace bipbip">
+      <div>(press space to give the items)</div>
+    </div>
+
+    <div class="loseLife">
+      <div>you lost a life!</div>
+    </div>
+
+    <div id="playagain">Play again? Wait ...</div>
+
+    <div class="carrotsToGooo">
+      <span id="carrotsToGo">15</span> carrots to go!
+    </div>
 
     <section class="pfiouh">
       <div class="introduction">
         <h1 class="under">Oh... hi there.</h1>
-        <h3>Do you think your life is easy?</h3>
       </div>
 
       <div class="widget">
-        <i id="arrowRight" class="fas fa-arrow-right"></i>
-        <button class="skipintro">skip this magnificient introduction</button>
+        <div><i id="arrowRight" class="fas fa-arrow-right"></i></div>
+        <div class="skipintro">(skip this magnificent introduction)</div>
       </div>
     </section>
 
@@ -47,15 +79,13 @@
 
       <div class="objects">
         <div class="items">
-          <div><h3>You have : </h3></div>
+          <div><h3>You have :</h3></div>
         </div>
 
         <div class="items2" id="numLives"></div>
 
         <div class="items">
-          <div>
-            <span id="numCarrots">0</span><i class="fas fa-carrot"></i>
-          </div>
+          <div><span id="numCarrots">0</span><i class="fas fa-carrot"></i></div>
 
           <div>
             <span id="numBeers">0</span><i class="fas fa-wine-bottle"></i>
@@ -64,18 +94,16 @@
           <div>
             <span id="numShells">0</span><i class="fas fa-dollar-sign"></i>
           </div>
-          
         </div>
       </div>
 
       <div class="bigContainer">
         <div id="lama">
-            <img src="./img/noun_Geometric Llama_1514526.png">
-            <!-- <p>0</p> = <i class="fas fa-skull-crossbones"></i> -->
-          
+          <img src="./img/noun_lama.png" />
+          <!-- <p>0</p> = <i class="fas fa-skull-crossbones"></i> -->
         </div>
         <div class="container"></div>
-        <img id="home" class="home" src="./img/noun_House_2801037.png" />
+        <img id="home" class="home" src="./img/noun_house.png" />
       </div>
 
       <div class="down">
@@ -84,7 +112,7 @@
           <span id="lamaText">"Get back to work!!!"</span>
         </div>
         <div id="bar">
-          <img src="./img/noun_Bar_2542914.png">
+          <img src="./img/noun_bar.png" />
         </div>
         <div class="msg">
           <h3>Piñatino says:</h3>
@@ -99,9 +127,10 @@
 
       <footer class="times">
         <div class="timer1">
-          <div class="tofill" id="lamafill"></div>
+          <div class="tofill" id="lamafill">
+            <i class="fas fa-skull-crossbones"></i>
+          </div>
         </div>
-        
       </footer>
 
       <script src="./js/messages.js"></script>
