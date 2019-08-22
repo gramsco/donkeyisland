@@ -12,6 +12,7 @@ let lama = document.querySelector(".lama")
 let home = document.querySelector(".home")
 let bar = document.querySelector("#bar")
 
+let str =`<i class="fas fa-horse-head"></i>`;
 // The warnings and instructions
 let introduction = document.querySelector(".introduction")
 let bouton = document.querySelector(".skipintro")
@@ -46,6 +47,12 @@ let canStart = false;
 let music = true;
 let music_btn = document.querySelector(".music")
 var audio = new Audio('/sounds/Coralie.wav');
+var carotte = new Audio('/sounds/carotte.mp3')
+var cash = new Audio('/sounds/cashing.mp3')
+var lose = new Audio('/sounds/lose.mp3')
+var lamalaugh = new Audio('/sounds/lamalaugh.mp3')
+var shellsound = new Audio('/sounds/shell.mp3')
+
 audio.loop = true;
 
 
@@ -103,9 +110,9 @@ function start() {
 
     // rendering des timers / objets
     let intervalglobal = setInterval(() => {
-        spanCarrots.innerHTML = game.numCarrots;
-        spanShells.innerHTML = game.numShells;
-        spanDrinks.innerHTML = game.numDrinks;
+        spanCarrots.innerHTML = game.numCarrots + " ";
+        spanShells.innerHTML = game.numShells + " ";
+        spanDrinks.innerHTML = game.numDrinks + " ";
         // lamaFill.innerHTML = game.lamatimer;
         lamaFill.style.width = (5*game.lamatimer) + "%";
         sonFill.style.width = (10*game.childtimer) + "%";
@@ -115,12 +122,12 @@ function start() {
         if (game.lamatimer <= 0) {
             game.lamatimer = 20;
             losesLife();
+            lose.play();
         }
         if (game.childtimer >= 10){
             wingame();
         }
-        console.log(game.lives)
-        numlives.innerHTML = game.lives;
+        numlives.innerHTML = (str + " ").repeat(game.lives)
 
     }, 10);
 
@@ -263,12 +270,16 @@ function start() {
         if (e.key == "ArrowRight" || e.key == "d") moveRight(game);
         if (e.key == "ArrowUp" || e.key == "z") moveUp(game);
         if (e.key == "ArrowDown" || e.key == "s") moveDown(game);
-        if (e.code == "Space") game.swapItems();
+        if (e.code == "Space") {
+            game.swapItems();
+            cash.play()
+        }
             
         
 
         if (game.carrotDestroyer(game.currentID)) {
             document.getElementById(game.currentID).classList.remove("carrot");
+    
         }
 
         if (game.shellsDestroyer(game.currentID)) {
@@ -288,7 +299,8 @@ function start() {
         let result = game.moveLeft();
 
         if (result == "lama") {
-            lama.classList.add("joker")
+            lama.classList.add("selected")
+            lama.classList.remove("joker")
         } else if (result == "home") {
             home.classList.remove("joker")
             home.classList.remove("selected")
@@ -296,7 +308,7 @@ function start() {
 
         //updates the DOM
         currentElement = document.getElementById(game.currentID);
-        currentElement.classList.add("joker");
+        currentElement.classList.toggle("joker");
 
     }
 
@@ -311,7 +323,6 @@ function start() {
         //then changes it to DOM
         if (result == "home") {
             home.classList.add("selected")
-            home.classList.add("joker")
         } else if (result == "lama") {
             lama.classList.remove("selected");
             lama.classList.remove("joker")
@@ -353,8 +364,7 @@ function start() {
         //checks if it can go down
         let result = game.moveDown();
         if (result == "bar") {
-            bar.innerHTML.classList.add("selected")
-            bar.innerHTML.classList.add("joker")
+            bar.classList.add("selected")
         }
 
         //add the donkey on the DOM

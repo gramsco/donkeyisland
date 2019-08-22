@@ -10,6 +10,7 @@
   list-style-type: none;
 }
 
+
 .pfiouh{
   animation:5s pfiouh linear forwards;
 }
@@ -272,12 +273,12 @@ footer {
 .selected {
   border: 1px gold solid;
   background:black;
-  /* transform: rotate(2deg); */
+  transform:scale(1.5);
 }
 
 .lama {
   background-size: cover;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 125, 0, 0.5);
   width:10%;
   padding-top:1%;
   padding-bottom:1%;
@@ -287,7 +288,6 @@ footer {
   margin-top: 5%;
   width: auto;
   height: auto;
-  justify-self:flex-start;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -313,11 +313,11 @@ footer {
 
 .bigContainer {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: auto;
+  justify-content: center;
+  align-items:self-end;
+  /* width: auto; */
   text-align: center;
-  height: auto;
+  /* height: auto; */
 }
 
 li {
@@ -337,8 +337,8 @@ li {
   height: auto;
 }
 
-[id="40"],
-[id="50"],[id="49"],[id="59"],[id="94"],[id="95"] {
+[id="00"],
+[id="10"],[id="49"],[id="59"],[id="94"],[id="95"] {
   border: solid 1px white;
   background:rgba(0,0,0,0.3)
 }
@@ -369,11 +369,18 @@ li {
 }
 
 #bar{
-  background:url('/img/booze.jpeg');
+  background:rgba(255, 160, 0, 0.5);
+  width:20%;
+}
+
+#bar img{
+  /* background:url('/img/booze.jpeg'); */
+  display: block;
   opacity:1;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position:50%;
+  max-width:50%;
+  max-height:50%;
+  /* background-repeat: no-repeat;
+  background-position:50%; */
   transform:scale(1.2);
 }
 
@@ -440,13 +447,14 @@ li {
 }
 
 .carrot {
-  background: url("/img/Carotte.png");
+  background: url("/img/carrot.jpg") gold;
   background-size: cover;
   transform: scale(1.1);
+
 }
 
 .shell {
-  background: url("/img/shell-template.jpg");
+  background: url("/img/shell.png");
   background-size: cover;
   transform: scale(0.7);
 }

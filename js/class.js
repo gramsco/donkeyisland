@@ -16,10 +16,10 @@ class Game {
         this.currentID = "00";
 
         //number of items
-        this.numCarrots = 10;
+        this.numCarrots = 0;
         this.numShells = 0;
         this.totalShells = 0;
-        this.lives = 3;
+        this.lives = 4;
         this.numDrinks = 0;
         this.totalcarrots = 0
 
@@ -33,6 +33,7 @@ class Game {
 
         //timers 
         this.time = 0;
+        // this.lamatimer = 20;
         this.lamatimer = 20;
         this.childtimer = 0;
         this.gametimer = 0;
@@ -89,9 +90,8 @@ class Game {
 
     moveLeft() {
         if (this.inHouse || this.inBar) return false;
-        if (this.currentID == "40" || this.currentID == "50") {
+        if (this.currentID == "00" || this.currentID == "10") {
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
-            alert(`entered from ${this.currentID}`)
             this.currentID = "lama";
             this.inHouse = true;
             return "lama";
@@ -118,7 +118,7 @@ class Game {
             return "home"
         }
         if (this.inHouse == true) {
-            this.currentID = "40";
+            this.currentID = "00";
             this.inHouse = false;
             this.mapJS[this.currentID[0]][this.currentID[1]] = this.currentID;
             
@@ -140,7 +140,7 @@ class Game {
             this.mapJS[this.currentID[0]][this.currentID[1]] == this.currentID;
             this.currentID = "bar";
             this.inBar = true;
-            return "home"
+            return "bar"
         }
        
         if (this.currentID[0] >= 9) return false;

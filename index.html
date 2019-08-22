@@ -1,14 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Donkey Island</title>
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SandBox</title>
+    <link rel="stylesheet" href="./fontawesome-free-5.10.1-web/css/all.css">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+  
+  </head>
 
-<body>
-    
-</body>
+  <body>
+    <div id="playagain">Play again?</div>
+    <section class="introduction pfiouh">
+      
+      <div class="cont_intro">
+        <h1 class="under">Oh... hi there.</h1>
+        <br/>
+        <h3>Would you say your life is comfortable?</h3>
+        <h2 class="under"><span class="green">YES </span> | <span class="red"> NO</span></h2>
+      </div>
+
+      <button class="skipintro">(skip this magnificient introduction)</button>
+    </section>
+
+    <main>
+      <!-- HAMMER JS ? check if exists or alternative -->
+
+      <header>
+        <div class="instruction">Instructions</div>
+        <h1>Donkey Island</h1>
+        <div class="music">Music</div>
+      </header>
+
+      <div class="objects">
+        <h3>You have</h3>
+        <div class="menu ">
+          <h2 id="numLives"></h2>
+        </div>
+        <div>
+          <div class="menu "><span id="numCarrots"> </span> <i class="fas fa-carrot"></i></div>
+          <div class="menu"><span id="numBeers">0</span> <i class="fas fa-cocktail"></i></div>
+          <div class="menu "><span id="numShells">0</span><i class="fas fa-dollar-sign"></i>hell<i class="fas fa-dollar-sign"></i></div>
+        </div>
+      </div>
+
+      <div class="bigContainer">
+        <div class="lama"><h2 id="lama">Lama del Rey's villa<i class="fas fa-home"></i></h2></div>
+        <div class="container"></div>
+        <img id="home" class="home" src="/img/fishery.svg" />
+      </div>
+
+      <div class="down">
+        <div>
+          <h3>Lama del Rey</h3>
+          <span id="lamaText">"Get back to work!!!"</span>
+        </div>
+        <div id="bar">O'SmartAss<p><i class="fas fa-wine-bottle"></i></p></div>
+        <div>
+          <h3>Piñatino</h3>
+          <span id="sonText">"Dad... I'm so hungry..."</span>
+        </div>
+      </div>
+
+      <div class="warning hidden">
+        <img id="img_warning" />
+        <p id="txt_warning"></p>
+      </div>
+
+      <footer class="times">
+        <div class="timer1">
+          <div class="tofill" id="lamafill"></div>
+        </div>
+        <div class="timer2">
+          <div class="tofill2" id="sonfill"></div>
+        </div>
+      </footer>
+
+      <script src="./js/messages.js"></script>
+      <script src="./js/class.js"></script>
+      <script src="./js/dom.js"></script>
+    </main>
+  </body>
 </html>
