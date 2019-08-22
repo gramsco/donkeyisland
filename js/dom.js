@@ -57,11 +57,11 @@ let canStart = false;
 //Music Manager
 let music = true;
 let music_btn = document.querySelector(".music")
-var audio = new Audio('.././sounds/Coralie.wav');
-var carotte = new Audio('.././sounds/ding.mp3');
-var cash = new Audio('.././sounds/cashing.mp3')
-var lose = new Audio('.././sounds/lose.mp3')
-var lamalaugh = new Audio('.././sounds/lamalaugh.mp3')
+var audio = new Audio('.././src/Coralie.wav');
+var carotte = new Audio('.././src/ding.mp3');
+var cash = new Audio('.././src/cashing.mp3')
+var lose = new Audio('.././src/lose.mp3')
+var lamalaugh = new Audio('.././src/lamalaugh.mp3')
 
 
 
@@ -69,7 +69,7 @@ var lamalaugh = new Audio('.././sounds/lamalaugh.mp3')
 function launch() {
     audio.loop = true;
     audio.volume = 1;
-    
+
     if (music) {
         music = false;
         audio.volume = 0;

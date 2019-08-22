@@ -1,5 +1,3 @@
-
-
 let intro_msgs = [
    `<div>Have you heard about <span class="toHide">Donkey Island</span> and its inhabitants? Let me brief you...</div>`,
    `<div>Let's take <span class="toHide">Joker</span>, for instance.</div><div>Joker is a donkey. A honest-to-God, working class, donkey.</div><div>His life is hard. Like really, really, hard. I mean, just look at the facts:</div>`,
