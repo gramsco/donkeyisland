@@ -57,7 +57,7 @@ let canStart = false;
 //Music Manager
 let music = true;
 let music_btn = document.querySelector(".music")
-var musique = new Audio('.././src/coralie.wav');
+var musique = new Audio('.././src/background_music.wav');
 var carotte = new Audio('.././src/ding.mp3');
 var cash = new Audio('.././src/cashing.mp3')
 var lose = new Audio('.././src/lose.mp3')
