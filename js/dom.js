@@ -57,7 +57,7 @@ let canStart = false;
 //Music Manager
 let music = true;
 let music_btn = document.querySelector(".music")
-var musique = new Audio('.././src/background_music.wav');
+var musique = new Audio('.././src/coralie.wav');
 var carotte = new Audio('.././src/ding.mp3');
 var cash = new Audio('.././src/cashing.mp3')
 var lose = new Audio('.././src/lose.mp3')
@@ -133,7 +133,7 @@ function start() {
 
     main.classList.add("pfiouh")
     // bg.classList.add("blur")
-    audio.play();
+    musique.play();
     section.style.visibility = "hidden";
     main.style.visibility = "visible";
     game.createMap();
@@ -234,7 +234,7 @@ function start() {
         clearInterval(intervalglobal)
         bg.classList.add("unblur")
         bg.classList.remove('blur')
-        audio.volume = 0;
+        musique.volume = 0;
         introduction.innerHTML = `<h1>YOU SAVED THE DAY !</h1><p>Enjoy the view.</p>`
         introduction.style.visibility = "visible";
         introduction.classList.add("reverse-pfiouh")
@@ -248,7 +248,7 @@ function start() {
 
     function losesGame() {
         clearInterval(intervalglobal)
-        audio.volume = 0;
+        musique.volume = 0;
         introduction.innerHTML = `<h1>YOU LOST !</h1><p>Your son Piñatino will probably eat you.</p>`
         introduction.classList.add("reverse-pfiouh")
         introduction.style.visibility = "visible";
