@@ -16,7 +16,7 @@ class Game {
         this.currentID = "00";
 
         //number of items
-        this.numCarrots = 10;
+        this.numCarrots = 0;
         this.numShells = 0;
         this.totalShells = 0;
         this.lives = 3;
