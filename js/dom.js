@@ -55,7 +55,7 @@ let lamatimer = document.getElementById("lamafill")
 let canStart = false;
 
 //Music Manager
-let music = true;
+let music = false;
 let music_btn = document.querySelector(".music")
 var audio = new Audio('./src/background_music.wav');
 var carotte = new Audio('./src/ding.mp3');
